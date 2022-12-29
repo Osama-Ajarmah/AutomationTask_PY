@@ -18,6 +18,7 @@ insert = []
 @pytest.mark.parametrize("data", get_data())
 def test_run(data):
     insert.append([data, googleResult(data), yahooResult(data), bingResult(data)])
+
     with open(BASE_DIR.joinpath(cfgFileDirectory).joinpath('search_output.csv'), 'w', newline='', encoding="utf-8") as csvfile:
         spamwriter = csv.writer(csvfile)
         spamwriter.writerow(['search text', 'Google result', 'yahoo result', 'Bing result'])

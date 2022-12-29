@@ -9,17 +9,16 @@ def bingResult(query):
     driver = webdriver.Chrome()
     driver.get(baseURL)
     try:
-        driver.implicitly_wait(4)
+        driver.implicitly_wait(3)
         driver.find_element("name", "q").send_keys(query)
-        time.sleep(6)
+        time.sleep(3)
         osama = driver.find_element("name", "search")
         osama.submit()
-        time.sleep(10)
-        result = driver.find_element("xpath","/html/body/div[1]/main/ol/li[1]/div[1]/div/div/div/div/div/div/div/div/div/div[2]/div/div[1]/h2/a")
-        time.sleep(10)
-        result.click()
         time.sleep(2)
-        act_title = driver.title
+        result = driver.find_element("tag name", "h2")
+        time.sleep(2)
+        act_title = result.text
+
     except:
         act_title = "no data found"
     driver.quit()
